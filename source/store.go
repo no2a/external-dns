@@ -343,6 +343,8 @@ func BuildWithConfig(ctx context.Context, source string, p ClientGenerator, cfg 
 			return nil, err
 		}
 		return NewF5VirtualServerSource(ctx, dynamicClient, kubernetesClient, cfg.Namespace, cfg.AnnotationFilter)
+	case "dir":
+		return NewDirSource("sourcedir")
 	}
 
 	return nil, ErrSourceNotFound
